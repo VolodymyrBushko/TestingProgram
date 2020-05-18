@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Xml.Serialization;
 using System.Collections.Generic;
-
 namespace Xml2CSharp
 {
 	[XmlRoot(ElementName = "Answer")]
@@ -45,7 +44,7 @@ namespace Xml2CSharp
 	public class Tests
 	{
 		[XmlElement(ElementName = "Test")]
-		public Test Test { get; set; }
+		public List<Test> Test { get; set; }
 	}
 
 }
