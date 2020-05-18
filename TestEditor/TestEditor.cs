@@ -15,6 +15,8 @@ namespace TestEditor
 {
     public partial class TestEditor : Form
     {
+        private Tests tests;
+
         public TestEditor()
         {
             InitializeComponent();
@@ -25,16 +27,74 @@ namespace TestEditor
             openFileDialog.Filter = "XmlFiles | *.xml;";
         }
 
+        private void UIFromObject()
+        {
+            panelMain.Controls.Clear();
+            int stepHeight = 25;
+
+            if (listBox.SelectedItem != null)
+            {
+                foreach (var answer in (listBox.SelectedItem as Test).Answers.Answer)
+                {
+                    Panel panel = new Panel();
+                    TextBox textBox = new TextBox();
+                    CheckBox checkBox = new CheckBox();
+                    Label label = new Label();
+
+                    panel.Controls.Add(textBox);
+                    panel.Controls.Add(checkBox);
+
+                    panel.Size = new Size(203, 30);
+                    panel.Location = new Point(5, stepHeight);
+                    stepHeight += 25;
+
+                    label.Text = "Answers :";
+                    label.Location = new Point(10, 10);
+
+                    textBox.Location = new Point(3, 5);
+                    textBox.Text = answer.Text;
+
+                    checkBox.Location = new Point(120, 3);
+                    checkBox.Text = "IsRight";
+
+                    if (answer.IsRight == "true")
+                        checkBox.Checked = true;
+
+                    panelMain.Controls.Add(panel);
+                    panelMain.Controls.Add(label);
+                }
+            }
+        }
+
         private void buttonBrowse_Click(object sender, EventArgs e)
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(Tests));
-                using (FileStream fileStream = new FileStream(openFileDialog.FileName, FileMode.Open))
+                using (FileStream stream = new FileStream(openFileDialog.FileName, FileMode.Open))
                 {
-                    Tests tests = (Tests)serializer.Deserialize(fileStream);
-                    MessageBox.Show(tests.Test[0].Author);
+                    XmlSerializer serializer = new XmlSerializer(typeof(Tests));
+                    tests = (Tests)serializer.Deserialize(stream);
+
+                    bindingSource.DataSource = tests.Test;
+                    listBox.DataSource = bindingSource;
+
+                    UIFromObject();
                 }
+            }
+        }
+
+        private void listBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBox.SelectedItem != null)
+            {
+                Test test = listBox.SelectedItem as Test;
+
+                textBoxAuthor.Text = test.Author;
+                textBoxName.Text = test.Name;
+                textBoxDate.Text = test.Date;
+                textBoxDescription.Text = test.Description;
+
+                UIFromObject();
             }
         }
     }

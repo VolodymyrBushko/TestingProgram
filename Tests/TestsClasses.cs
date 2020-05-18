@@ -6,8 +6,6 @@ namespace Xml2CSharp
 	[XmlRoot(ElementName = "Answer")]
 	public class Answer
 	{
-		[XmlAttribute(AttributeName = "Id")]
-		public string Id { get; set; }
 		[XmlAttribute(AttributeName = "isRight")]
 		public string IsRight { get; set; }
 		[XmlText]
@@ -38,6 +36,8 @@ namespace Xml2CSharp
 		public string Difficulty { get; set; }
 		[XmlAttribute(AttributeName = "Date")]
 		public string Date { get; set; }
+
+		public override string ToString() => Name;
 	}
 
 	[XmlRoot(ElementName = "Tests")]
