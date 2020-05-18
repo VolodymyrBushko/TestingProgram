@@ -36,6 +36,7 @@ namespace TestEditor
             {
                 foreach (var answer in (listBox.SelectedItem as Test).Answers.Answer)
                 {
+                    #region Initialize UI elements
                     Panel panel = new Panel();
                     TextBox textBox = new TextBox();
                     CheckBox checkBox = new CheckBox();
@@ -59,9 +60,17 @@ namespace TestEditor
 
                     if (answer.IsRight == "true")
                         checkBox.Checked = true;
+                    #endregion
 
+                    #region Include events to UI elements
+                    textBox.TextChanged += (s, e) => answer.Text = textBox.Text;
+                    checkBox.CheckedChanged += (s, e) => answer.IsRight = checkBox.Checked.ToString().ToLower();
+                    #endregion
+
+                    #region Add UI elements to panel
                     panelMain.Controls.Add(panel);
                     panelMain.Controls.Add(label);
+                    #endregion
                 }
             }
         }
@@ -97,5 +106,32 @@ namespace TestEditor
                 UIFromObject();
             }
         }
+
+        private void TestEditor_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (tests != null)
+            {
+                using (FileStream stream = new FileStream(openFileDialog.FileName, FileMode.Open))
+                {
+                    XmlSerializer serializer = new XmlSerializer(typeof(Tests));
+                    serializer.Serialize(stream, tests);
+                }
+            }
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            if (listBox.SelectedItem != null)
+            {
+                Test test = listBox.SelectedItem as Test;
+
+                test.Author = textBoxAuthor.Text;
+                test.Name = textBoxName.Text;
+                test.Date = textBoxDate.Text;
+                test.Description = textBoxDescription.Text;
+            }
+        }
+
+
     }
 }
