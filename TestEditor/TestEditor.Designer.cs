@@ -46,13 +46,15 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.buttonCreate = new System.Windows.Forms.Button();
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonBrowse
             // 
-            this.buttonBrowse.Location = new System.Drawing.Point(3, 3);
+            this.buttonBrowse.Location = new System.Drawing.Point(4, 30);
             this.buttonBrowse.Name = "buttonBrowse";
             this.buttonBrowse.Size = new System.Drawing.Size(75, 23);
             this.buttonBrowse.TabIndex = 0;
@@ -64,6 +66,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.buttonCreate);
             this.panel1.Controls.Add(this.buttonRemove);
             this.panel1.Controls.Add(this.buttonNew);
             this.panel1.Controls.Add(this.buttonSave);
@@ -75,7 +78,7 @@
             // 
             // buttonRemove
             // 
-            this.buttonRemove.Location = new System.Drawing.Point(3, 90);
+            this.buttonRemove.Location = new System.Drawing.Point(4, 136);
             this.buttonRemove.Name = "buttonRemove";
             this.buttonRemove.Size = new System.Drawing.Size(75, 23);
             this.buttonRemove.TabIndex = 3;
@@ -85,7 +88,7 @@
             // 
             // buttonNew
             // 
-            this.buttonNew.Location = new System.Drawing.Point(3, 61);
+            this.buttonNew.Location = new System.Drawing.Point(4, 107);
             this.buttonNew.Name = "buttonNew";
             this.buttonNew.Size = new System.Drawing.Size(75, 23);
             this.buttonNew.TabIndex = 2;
@@ -96,7 +99,7 @@
             // buttonSave
             // 
             this.buttonSave.BackColor = System.Drawing.Color.PaleGreen;
-            this.buttonSave.Location = new System.Drawing.Point(3, 32);
+            this.buttonSave.Location = new System.Drawing.Point(4, 78);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 1;
@@ -192,6 +195,16 @@
             this.textBox4.TabIndex = 11;
             this.textBox4.Text = "Description :";
             // 
+            // buttonCreate
+            // 
+            this.buttonCreate.Location = new System.Drawing.Point(4, 3);
+            this.buttonCreate.Name = "buttonCreate";
+            this.buttonCreate.Size = new System.Drawing.Size(75, 23);
+            this.buttonCreate.TabIndex = 4;
+            this.buttonCreate.Text = "Create";
+            this.buttonCreate.UseVisualStyleBackColor = true;
+            this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
+            // 
             // TestEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -237,6 +250,8 @@
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonNew;
         private System.Windows.Forms.Button buttonRemove;
+        private System.Windows.Forms.Button buttonCreate;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
     }
 }
 

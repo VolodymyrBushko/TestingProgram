@@ -75,6 +75,11 @@ namespace TestEditor
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
+                buttonCreate.Enabled = false;
+                buttonBrowse.Enabled = false;
+
+                buttonBrowse.BackColor = Color.LightYellow;
+
                 using (FileStream stream = new FileStream(openFileDialog.FileName, FileMode.Open))
                 {
                     XmlSerializer serializer = new XmlSerializer(typeof(Tests));
@@ -109,7 +114,19 @@ namespace TestEditor
         {
             if (tests != null)
             {
-                using (FileStream stream = new FileStream(openFileDialog.FileName, FileMode.Open))
+                string fileName = string.Empty;
+
+                if (buttonCreate.BackColor == Color.LightYellow)
+                {
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                        fileName = saveFileDialog.FileName;
+                    else
+                        return;
+                }
+                else
+                    fileName = openFileDialog.FileName;
+
+                using (FileStream stream = new FileStream(fileName, FileMode.Create))
                 {
                     XmlSerializer serializer = new XmlSerializer(typeof(Tests));
                     serializer.Serialize(stream, tests);
@@ -134,7 +151,7 @@ namespace TestEditor
 
         private void buttonNew_Click(object sender, EventArgs e)
         {
-            if (openFileDialog.FileName != string.Empty)
+            if (buttonBrowse.Enabled == false)
             {
                 NewTestForm form = new NewTestForm(tests);
                 form.ShowDialog();
@@ -156,6 +173,20 @@ namespace TestEditor
         {
             if (tests != null)
                 buttonSave.BackColor = Color.Firebrick;
+        }
+
+        private void buttonCreate_Click(object sender, EventArgs e)
+        {
+            buttonBrowse.Enabled = false;
+            buttonCreate.Enabled = false;
+
+            buttonCreate.BackColor = Color.LightYellow;
+
+            tests = new Tests();
+            tests.Test = new List<Test>();
+
+            bindingSource.DataSource = tests.Test;
+            listBox.DataSource = bindingSource;
         }
     }
 }
