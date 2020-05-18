@@ -20,10 +20,6 @@ namespace TestEditor
         public TestEditor()
         {
             InitializeComponent();
-        }
-
-        private void TestEditor_Load(object sender, EventArgs e)
-        {
             openFileDialog.Filter = "XmlFiles | *.xml;";
         }
 
@@ -87,6 +83,8 @@ namespace TestEditor
                     bindingSource.DataSource = tests.Test;
                     listBox.DataSource = bindingSource;
 
+                    Text = openFileDialog.FileName;
+
                     UIFromObject();
                 }
             }
@@ -129,9 +127,35 @@ namespace TestEditor
                 test.Name = textBoxName.Text;
                 test.Date = textBoxDate.Text;
                 test.Description = textBoxDescription.Text;
+
+                buttonSave.BackColor = Color.PaleGreen;
             }
         }
 
+        private void buttonNew_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.FileName != string.Empty)
+            {
+                NewTestForm form = new NewTestForm(tests);
+                form.ShowDialog();
+                bindingSource.ResetBindings(false);
+            }
+        }
 
+        private void buttonRemove_Click(object sender, EventArgs e)
+        {
+            if (listBox.SelectedItem != null)
+            {
+                Test test = listBox.SelectedItem as Test;
+                tests.Test.Remove(test);
+                bindingSource.ResetBindings(false);
+            }
+        }
+
+        private void textBox_TextChanged(object sender, EventArgs e)
+        {
+            if (tests != null)
+                buttonSave.BackColor = Color.Firebrick;
+        }
     }
 }

@@ -49,6 +49,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NewTestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewTestForm.Designer.cs">
+      <DependentUpon>NewTestForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TestEditor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,6 +63,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="NewTestForm.resx">
+      <DependentUpon>NewTestForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TestEditor.resx">
       <DependentUpon>TestEditor.cs</DependentUpon>
     </EmbeddedResource>

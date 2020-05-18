@@ -32,6 +32,9 @@
             this.buttonBrowse = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonRemove = new System.Windows.Forms.Button();
+            this.buttonNew = new System.Windows.Forms.Button();
+            this.buttonSave = new System.Windows.Forms.Button();
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.listBox = new System.Windows.Forms.ListBox();
             this.textBoxAuthor = new System.Windows.Forms.TextBox();
@@ -43,7 +46,6 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.buttonSave = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             this.SuspendLayout();
@@ -62,12 +64,45 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.buttonRemove);
+            this.panel1.Controls.Add(this.buttonNew);
             this.panel1.Controls.Add(this.buttonSave);
             this.panel1.Controls.Add(this.buttonBrowse);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(84, 361);
             this.panel1.TabIndex = 1;
+            // 
+            // buttonRemove
+            // 
+            this.buttonRemove.Location = new System.Drawing.Point(3, 90);
+            this.buttonRemove.Name = "buttonRemove";
+            this.buttonRemove.Size = new System.Drawing.Size(75, 23);
+            this.buttonRemove.TabIndex = 3;
+            this.buttonRemove.Text = "Remove";
+            this.buttonRemove.UseVisualStyleBackColor = true;
+            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
+            // 
+            // buttonNew
+            // 
+            this.buttonNew.Location = new System.Drawing.Point(3, 61);
+            this.buttonNew.Name = "buttonNew";
+            this.buttonNew.Size = new System.Drawing.Size(75, 23);
+            this.buttonNew.TabIndex = 2;
+            this.buttonNew.Text = "New";
+            this.buttonNew.UseVisualStyleBackColor = true;
+            this.buttonNew.Click += new System.EventHandler(this.buttonNew_Click);
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.BackColor = System.Drawing.Color.PaleGreen;
+            this.buttonSave.Location = new System.Drawing.Point(3, 32);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(75, 23);
+            this.buttonSave.TabIndex = 1;
+            this.buttonSave.Text = "Save";
+            this.buttonSave.UseVisualStyleBackColor = false;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // listBox
             // 
@@ -84,6 +119,7 @@
             this.textBoxAuthor.Name = "textBoxAuthor";
             this.textBoxAuthor.Size = new System.Drawing.Size(134, 20);
             this.textBoxAuthor.TabIndex = 3;
+            this.textBoxAuthor.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             // 
             // textBoxName
             // 
@@ -91,6 +127,7 @@
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(134, 20);
             this.textBoxName.TabIndex = 4;
+            this.textBoxName.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             // 
             // textBoxDate
             // 
@@ -98,6 +135,7 @@
             this.textBoxDate.Name = "textBoxDate";
             this.textBoxDate.Size = new System.Drawing.Size(134, 20);
             this.textBoxDate.TabIndex = 5;
+            this.textBoxDate.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             // 
             // panelMain
             // 
@@ -110,10 +148,12 @@
             // 
             // textBoxDescription
             // 
+            this.textBoxDescription.BackColor = System.Drawing.Color.PaleGreen;
             this.textBoxDescription.Location = new System.Drawing.Point(250, 60);
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.Size = new System.Drawing.Size(134, 20);
             this.textBoxDescription.TabIndex = 7;
+            this.textBoxDescription.TextChanged += new System.EventHandler(this.textBox_TextChanged);
             // 
             // textBox1
             // 
@@ -144,22 +184,13 @@
             // 
             // textBox4
             // 
+            this.textBox4.BackColor = System.Drawing.Color.PaleGreen;
             this.textBox4.Location = new System.Drawing.Point(171, 60);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(79, 20);
             this.textBox4.TabIndex = 11;
             this.textBox4.Text = "Description :";
-            // 
-            // buttonSave
-            // 
-            this.buttonSave.Location = new System.Drawing.Point(3, 32);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(75, 23);
-            this.buttonSave.TabIndex = 1;
-            this.buttonSave.Text = "Save";
-            this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // TestEditor
             // 
@@ -180,7 +211,6 @@
             this.Name = "TestEditor";
             this.Text = "TestEditor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TestEditor_FormClosing);
-            this.Load += new System.EventHandler(this.TestEditor_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -205,6 +235,8 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Button buttonNew;
+        private System.Windows.Forms.Button buttonRemove;
     }
 }
 
