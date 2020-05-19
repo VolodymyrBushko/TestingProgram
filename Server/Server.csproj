@@ -84,22 +84,25 @@
     <Compile Include="Log in.Designer.cs">
       <DependentUpon>Log in.cs</DependentUpon>
     </Compile>
-    <Compile Include="OtherForm\AdminForm.cs">
+    <Compile Include="OtherForm\Admin\AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OtherForm\AdminForm.Designer.cs">
+    <Compile Include="OtherForm\Admin\AdminForm.Designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="OtherForm\TeacherForm.cs">
+    <Compile Include="OtherForm\Teacher\TeacherForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OtherForm\TeacherForm.Designer.cs">
+    <Compile Include="OtherForm\Teacher\TeacherForm.Designer.cs">
       <DependentUpon>TeacherForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Log in.resx">
       <DependentUpon>Log in.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OtherForm\Admin\AdminForm.resx">
+      <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -129,6 +132,9 @@
       <Project>{506E222C-D516-4EF3-A11E-96683A2B7CA1}</Project>
       <Name>Tables</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Xml\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
