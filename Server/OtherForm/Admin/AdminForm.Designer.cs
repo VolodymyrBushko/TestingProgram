@@ -83,6 +83,7 @@
             this.buttonAddGroup.TabIndex = 2;
             this.buttonAddGroup.Text = "Add group";
             this.buttonAddGroup.UseVisualStyleBackColor = true;
+            this.buttonAddGroup.Click += new System.EventHandler(this.buttonAddGroup_Click);
             // 
             // buttonShowResults
             // 

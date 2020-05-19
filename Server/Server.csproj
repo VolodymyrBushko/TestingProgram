@@ -84,6 +84,18 @@
     <Compile Include="Log in.Designer.cs">
       <DependentUpon>Log in.cs</DependentUpon>
     </Compile>
+    <Compile Include="OtherForm\Admin\AddGroupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OtherForm\Admin\AddGroupForm.Designer.cs">
+      <DependentUpon>AddGroupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OtherForm\Admin\AddUserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OtherForm\Admin\AddUserForm.Designer.cs">
+      <DependentUpon>AddUserForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="OtherForm\Admin\AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +112,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Log in.resx">
       <DependentUpon>Log in.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OtherForm\Admin\AddGroupForm.resx">
+      <DependentUpon>AddGroupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OtherForm\Admin\AddUserForm.resx">
+      <DependentUpon>AddUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OtherForm\Admin\AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
@@ -131,6 +149,10 @@
     <ProjectReference Include="..\Tables\Tables.csproj">
       <Project>{506E222C-D516-4EF3-A11E-96683A2B7CA1}</Project>
       <Name>Tables</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tests\Tests.csproj">
+      <Project>{6DDCB4E9-E582-443A-A2C6-A1342DC164D1}</Project>
+      <Name>Tests</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

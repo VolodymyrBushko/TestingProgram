@@ -13,6 +13,6 @@ namespace Tables
 
         public virtual ICollection<User> Users { get; set; }
 
-        Group() => Users = new List<User>();
+        public Group() => Users = new List<User>();
     }
 }

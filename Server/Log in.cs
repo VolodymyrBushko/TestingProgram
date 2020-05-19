@@ -36,8 +36,8 @@ namespace Server
             {
                 switch (user.Group.Title)
                 {
-                    case "Admin": form = new AdminForm(); break;
-                    case "Teacher": form = new TeacherForm(); break;
+                    case "Admin": form = new AdminForm(work, user); break;
+                    case "Teacher": form = new TeacherForm(work); break;
                     default: MessageBox.Show("Refusal to access"); return;
                 }
                 form.ShowDialog();

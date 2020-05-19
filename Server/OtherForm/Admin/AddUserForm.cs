@@ -1,5 +1,4 @@
-﻿using Repository;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,16 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Server.OtherForm
+namespace Server.OtherForm.Admin
 {
-    public partial class TeacherForm : Form
+    public partial class AddUserForm : Form
     {
-        private GenericUnitOfWork work;
-
-        public TeacherForm(GenericUnitOfWork work)
+        public AddUserForm()
         {
             InitializeComponent();
-            this.work = work;
         }
     }
 }
