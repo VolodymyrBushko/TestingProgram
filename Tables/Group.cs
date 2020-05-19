@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Tables
 {
@@ -14,5 +10,7 @@ namespace Tables
         public virtual ICollection<User> Users { get; set; }
 
         public Group() => Users = new List<User>();
+
+        public override string ToString() => Title;
     }
 }

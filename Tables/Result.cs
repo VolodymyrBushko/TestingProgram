@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Tables
 {
@@ -16,5 +12,7 @@ namespace Tables
         public virtual User User { get; set; }
 
         public Result() { }
+
+        public override string ToString() => Rating.ToString();
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Tables
 {
@@ -22,5 +18,7 @@ namespace Tables
             Tests = new List<Test>();
             Results = new List<Result>();
         }
+
+        public override string ToString() => Login;
     }
 }

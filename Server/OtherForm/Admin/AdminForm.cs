@@ -66,5 +66,11 @@ namespace Server.OtherForm
             AddGroupForm form = new AddGroupForm(work);
             form.ShowDialog();
         }
+
+        private void buttonAddUser_Click(object sender, EventArgs e)
+        {
+            AddUserForm form = new AddUserForm(work);
+            form.ShowDialog();
+        }
     }
 }

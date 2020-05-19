@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonAddTest = new System.Windows.Forms.Button();
-            this.buttonAddUser = new System.Windows.Forms.Button();
-            this.buttonAddGroup = new System.Windows.Forms.Button();
-            this.buttonShowResults = new System.Windows.Forms.Button();
-            this.buttonShowGroups = new System.Windows.Forms.Button();
-            this.buttonShowUsers = new System.Windows.Forms.Button();
             this.buttonShowTests = new System.Windows.Forms.Button();
+            this.buttonShowUsers = new System.Windows.Forms.Button();
+            this.buttonShowGroups = new System.Windows.Forms.Button();
+            this.buttonShowResults = new System.Windows.Forms.Button();
+            this.buttonAddGroup = new System.Windows.Forms.Button();
+            this.buttonAddUser = new System.Windows.Forms.Button();
+            this.buttonAddTest = new System.Windows.Forms.Button();
             this.panel = new System.Windows.Forms.Panel();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
@@ -56,24 +56,41 @@
             this.panel1.Size = new System.Drawing.Size(107, 361);
             this.panel1.TabIndex = 0;
             // 
-            // buttonAddTest
+            // buttonShowTests
             // 
-            this.buttonAddTest.Location = new System.Drawing.Point(3, 12);
-            this.buttonAddTest.Name = "buttonAddTest";
-            this.buttonAddTest.Size = new System.Drawing.Size(101, 23);
-            this.buttonAddTest.TabIndex = 0;
-            this.buttonAddTest.Text = "Add test";
-            this.buttonAddTest.UseVisualStyleBackColor = true;
-            this.buttonAddTest.Click += new System.EventHandler(this.buttonAddTest_Click);
+            this.buttonShowTests.Location = new System.Drawing.Point(3, 239);
+            this.buttonShowTests.Name = "buttonShowTests";
+            this.buttonShowTests.Size = new System.Drawing.Size(101, 23);
+            this.buttonShowTests.TabIndex = 6;
+            this.buttonShowTests.Text = "Show tests";
+            this.buttonShowTests.UseVisualStyleBackColor = true;
             // 
-            // buttonAddUser
+            // buttonShowUsers
             // 
-            this.buttonAddUser.Location = new System.Drawing.Point(3, 41);
-            this.buttonAddUser.Name = "buttonAddUser";
-            this.buttonAddUser.Size = new System.Drawing.Size(101, 23);
-            this.buttonAddUser.TabIndex = 1;
-            this.buttonAddUser.Text = "Add user";
-            this.buttonAddUser.UseVisualStyleBackColor = true;
+            this.buttonShowUsers.Location = new System.Drawing.Point(3, 268);
+            this.buttonShowUsers.Name = "buttonShowUsers";
+            this.buttonShowUsers.Size = new System.Drawing.Size(101, 23);
+            this.buttonShowUsers.TabIndex = 5;
+            this.buttonShowUsers.Text = "Show users";
+            this.buttonShowUsers.UseVisualStyleBackColor = true;
+            // 
+            // buttonShowGroups
+            // 
+            this.buttonShowGroups.Location = new System.Drawing.Point(3, 297);
+            this.buttonShowGroups.Name = "buttonShowGroups";
+            this.buttonShowGroups.Size = new System.Drawing.Size(101, 23);
+            this.buttonShowGroups.TabIndex = 4;
+            this.buttonShowGroups.Text = "Show groups";
+            this.buttonShowGroups.UseVisualStyleBackColor = true;
+            // 
+            // buttonShowResults
+            // 
+            this.buttonShowResults.Location = new System.Drawing.Point(3, 326);
+            this.buttonShowResults.Name = "buttonShowResults";
+            this.buttonShowResults.Size = new System.Drawing.Size(101, 23);
+            this.buttonShowResults.TabIndex = 3;
+            this.buttonShowResults.Text = "Show results";
+            this.buttonShowResults.UseVisualStyleBackColor = true;
             // 
             // buttonAddGroup
             // 
@@ -85,41 +102,25 @@
             this.buttonAddGroup.UseVisualStyleBackColor = true;
             this.buttonAddGroup.Click += new System.EventHandler(this.buttonAddGroup_Click);
             // 
-            // buttonShowResults
+            // buttonAddUser
             // 
-            this.buttonShowResults.Location = new System.Drawing.Point(3, 326);
-            this.buttonShowResults.Name = "buttonShowResults";
-            this.buttonShowResults.Size = new System.Drawing.Size(101, 23);
-            this.buttonShowResults.TabIndex = 3;
-            this.buttonShowResults.Text = "Show results";
-            this.buttonShowResults.UseVisualStyleBackColor = true;
+            this.buttonAddUser.Location = new System.Drawing.Point(3, 41);
+            this.buttonAddUser.Name = "buttonAddUser";
+            this.buttonAddUser.Size = new System.Drawing.Size(101, 23);
+            this.buttonAddUser.TabIndex = 1;
+            this.buttonAddUser.Text = "Add user";
+            this.buttonAddUser.UseVisualStyleBackColor = true;
+            this.buttonAddUser.Click += new System.EventHandler(this.buttonAddUser_Click);
             // 
-            // buttonShowGroups
+            // buttonAddTest
             // 
-            this.buttonShowGroups.Location = new System.Drawing.Point(3, 297);
-            this.buttonShowGroups.Name = "buttonShowGroups";
-            this.buttonShowGroups.Size = new System.Drawing.Size(101, 23);
-            this.buttonShowGroups.TabIndex = 4;
-            this.buttonShowGroups.Text = "Show groups";
-            this.buttonShowGroups.UseVisualStyleBackColor = true;
-            // 
-            // buttonShowUsers
-            // 
-            this.buttonShowUsers.Location = new System.Drawing.Point(3, 268);
-            this.buttonShowUsers.Name = "buttonShowUsers";
-            this.buttonShowUsers.Size = new System.Drawing.Size(101, 23);
-            this.buttonShowUsers.TabIndex = 5;
-            this.buttonShowUsers.Text = "Show users";
-            this.buttonShowUsers.UseVisualStyleBackColor = true;
-            // 
-            // buttonShowTests
-            // 
-            this.buttonShowTests.Location = new System.Drawing.Point(3, 239);
-            this.buttonShowTests.Name = "buttonShowTests";
-            this.buttonShowTests.Size = new System.Drawing.Size(101, 23);
-            this.buttonShowTests.TabIndex = 6;
-            this.buttonShowTests.Text = "Show tests";
-            this.buttonShowTests.UseVisualStyleBackColor = true;
+            this.buttonAddTest.Location = new System.Drawing.Point(3, 12);
+            this.buttonAddTest.Name = "buttonAddTest";
+            this.buttonAddTest.Size = new System.Drawing.Size(101, 23);
+            this.buttonAddTest.TabIndex = 0;
+            this.buttonAddTest.Text = "Add test";
+            this.buttonAddTest.UseVisualStyleBackColor = true;
+            this.buttonAddTest.Click += new System.EventHandler(this.buttonAddTest_Click);
             // 
             // panel
             // 
