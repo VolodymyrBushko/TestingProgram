@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using Xml2CSharp;
@@ -75,9 +71,7 @@ namespace TestEditor
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                buttonCreate.Enabled = false;
-                buttonBrowse.Enabled = false;
-
+                buttonCreate.Enabled = buttonBrowse.Enabled = false;
                 buttonBrowse.BackColor = Color.LightYellow;
 
                 using (FileStream stream = new FileStream(openFileDialog.FileName, FileMode.Open))
@@ -155,7 +149,7 @@ namespace TestEditor
 
         private void buttonNew_Click(object sender, EventArgs e)
         {
-            if (buttonBrowse.Enabled == false)
+            if (buttonBrowse.Enabled == false && buttonCreate.Enabled == false)
             {
                 NewTestForm form = new NewTestForm(tests);
                 form.ShowDialog();
@@ -181,8 +175,7 @@ namespace TestEditor
 
         private void buttonCreate_Click(object sender, EventArgs e)
         {
-            buttonBrowse.Enabled = false;
-            buttonCreate.Enabled = false;
+            buttonBrowse.Enabled = buttonCreate.Enabled = false;
 
             textBoxDate.Text = DateTime.Now.ToString();
             buttonCreate.BackColor = Color.LightYellow;
