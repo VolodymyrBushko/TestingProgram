@@ -30,22 +30,17 @@ namespace Server
         private void buttonOk_Click(object sender, EventArgs e)
         {
             User user = users.FirstOrDefault(x => x.Login == textBoxLogin.Text && x.Password == textBoxPassword.Text);
+            Form form = null;
 
             if (user != null)
             {
                 switch (user.Group.Title)
                 {
-                    case "Admin":
-                        AdminForm form = new AdminForm();
-                        form.ShowDialog();
-                        break;
-                    case "Teacher":
-                        
-                        break;
-                    default:
-                        MessageBox.Show("Refusal to access");
-                        break;
+                    case "Admin": form = new AdminForm(); break;
+                    case "Teacher": form = new TeacherForm(); break;
+                    default: MessageBox.Show("Refusal to access"); return;
                 }
+                form.ShowDialog();
             }
             else
                 MessageBox.Show("Bad login or password");

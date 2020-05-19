@@ -26,7 +26,7 @@ namespace TestEditor
         private void UIFromObject()
         {
             panelMain.Controls.Clear();
-            int stepHeight = 25;
+            int stepHeight = 50;
 
             if (listBox.SelectedItem != null)
             {
@@ -43,15 +43,15 @@ namespace TestEditor
 
                     panel.Size = new Size(203, 30);
                     panel.Location = new Point(5, stepHeight);
-                    stepHeight += 25;
+                    stepHeight += 30;
 
                     label.Text = "Answers :";
-                    label.Location = new Point(10, 10);
+                    label.Location = new Point(10, 35);
 
-                    textBox.Location = new Point(3, 5);
+                    textBox.Location = new Point(3, 10);
                     textBox.Text = answer.Text;
 
-                    checkBox.Location = new Point(120, 3);
+                    checkBox.Location = new Point(120, 8);
                     checkBox.Text = "IsRight";
 
                     if (answer.IsRight == "true")
@@ -84,14 +84,19 @@ namespace TestEditor
                 {
                     XmlSerializer serializer = new XmlSerializer(typeof(Tests));
                     tests = (Tests)serializer.Deserialize(stream);
-
-                    bindingSource.DataSource = tests.Test;
-                    listBox.DataSource = bindingSource;
-
-                    Text = openFileDialog.FileName;
-
-                    UIFromObject();
                 }
+
+                bindingSource.DataSource = tests.Test;
+                listBox.DataSource = bindingSource;
+
+                textBoxAuthor.Text = tests.Author;
+                textBoxSubject.Text = tests.Subject;
+                textBoxDate.Text = tests.Date;
+                textBoxPassTime.Text = tests.PassTime;
+
+                Text = openFileDialog.FileName;
+
+                UIFromObject();
             }
         }
 
@@ -99,20 +104,14 @@ namespace TestEditor
         {
             if (listBox.SelectedItem != null)
             {
-                Test test = listBox.SelectedItem as Test;
-
-                textBoxAuthor.Text = test.Author;
-                textBoxName.Text = test.Name;
-                textBoxDate.Text = test.Date;
-                textBoxDescription.Text = test.Description;
-
+                textBoxDescription.Text = (listBox.SelectedItem as Test).Description;
                 UIFromObject();
             }
         }
 
         private void TestEditor_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (tests != null)
+            if (tests != null && Controls.OfType<TextBox>().Count(x => string.IsNullOrWhiteSpace(x.Text)) == 0)
             {
                 string fileName = string.Empty;
 
@@ -126,6 +125,8 @@ namespace TestEditor
                 else
                     fileName = openFileDialog.FileName;
 
+                buttonSave_Click(null, null);
+
                 using (FileStream stream = new FileStream(fileName, FileMode.Create))
                 {
                     XmlSerializer serializer = new XmlSerializer(typeof(Tests));
@@ -136,14 +137,17 @@ namespace TestEditor
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (listBox.SelectedItem != null)
+            if (Controls.OfType<TextBox>().Count(x => string.IsNullOrWhiteSpace(x.Text)) == 0 && listBox.SelectedItem != null)
             {
-                Test test = listBox.SelectedItem as Test;
+                tests.Author = textBoxAuthor.Text;
+                tests.Subject = textBoxSubject.Text;
+                tests.Date = textBoxDate.Text;
+                tests.PassTime = textBoxPassTime.Text;
 
-                test.Author = textBoxAuthor.Text;
-                test.Name = textBoxName.Text;
-                test.Date = textBoxDate.Text;
+                Test test = listBox.SelectedItem as Test;
                 test.Description = textBoxDescription.Text;
+
+                bindingSource.ResetBindings(false);
 
                 buttonSave.BackColor = Color.PaleGreen;
             }
@@ -180,6 +184,7 @@ namespace TestEditor
             buttonBrowse.Enabled = false;
             buttonCreate.Enabled = false;
 
+            textBoxDate.Text = DateTime.Now.ToString();
             buttonCreate.BackColor = Color.LightYellow;
 
             tests = new Tests();

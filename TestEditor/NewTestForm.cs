@@ -28,11 +28,8 @@ namespace TestEditor
             if (Controls.OfType<TextBox>().Count(x => string.IsNullOrWhiteSpace(x.Text)) == 0)
             {
                 Test test = new Test();
-                test.Name = textBoxName.Text;
-                test.Author = textBoxAuthor.Text;
                 test.Description = textBoxDescription.Text;
                 test.Difficulty = textBoxDifficulty.Text;
-                test.Date = DateTime.Now.ToString();
 
                 test.Answers = new Answers();
                 test.Answers.Count = textBoxAmountAnswer.Text;

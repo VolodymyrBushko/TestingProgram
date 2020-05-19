@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Xml.Serialization;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+
 namespace Xml2CSharp
 {
 	[XmlRoot(ElementName = "Answer")]
@@ -28,16 +30,10 @@ namespace Xml2CSharp
 		public string Description { get; set; }
 		[XmlElement(ElementName = "Answers")]
 		public Answers Answers { get; set; }
-		[XmlAttribute(AttributeName = "Author")]
-		public string Author { get; set; }
-		[XmlAttribute(AttributeName = "Name")]
-		public string Name { get; set; }
 		[XmlAttribute(AttributeName = "Difficulty")]
 		public string Difficulty { get; set; }
-		[XmlAttribute(AttributeName = "Date")]
-		public string Date { get; set; }
 
-		public override string ToString() => Name;
+		public override string ToString() => Description;
 	}
 
 	[XmlRoot(ElementName = "Tests")]
@@ -45,6 +41,13 @@ namespace Xml2CSharp
 	{
 		[XmlElement(ElementName = "Test")]
 		public List<Test> Test { get; set; }
+		[XmlAttribute(AttributeName = "Author")]
+		public string Author { get; set; }
+		[XmlAttribute(AttributeName = "Subject")]
+		public string Subject { get; set; }
+		[XmlAttribute(AttributeName = "Date")]
+		public string Date { get; set; }
+		[XmlAttribute(AttributeName = "PassTime")]
+		public string PassTime { get; set; }
 	}
-
 }
