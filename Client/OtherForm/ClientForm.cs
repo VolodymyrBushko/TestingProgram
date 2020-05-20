@@ -45,6 +45,14 @@ namespace Client.OtherForm
                 listViewTests.Invoke(new Action(() => { listViewTests.Items.Add(tests.ToString()); }));
             }
         }
-        //Зробити тестування (tests)
+
+        private void buttonRun_Click(object sender, EventArgs e)
+        {
+            if(listViewTests.SelectedItems.Count > 0)
+            {
+                RunTestForm form = new RunTestForm(socket, tests);
+                form.ShowDialog();
+            }
+        }
     }
 }

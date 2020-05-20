@@ -110,6 +110,7 @@ namespace Server.OtherForm
 
                         byte[] buffer = Converter.ToByteArray<Tests>(tests);
                         clientSocket.Send(buffer);
+                        //Task.Run(()=>ReceiveTestResult())
                     }
                 }
             }

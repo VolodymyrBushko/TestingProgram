@@ -62,6 +62,7 @@
             this.buttonRun.TabIndex = 0;
             this.buttonRun.Text = "Run";
             this.buttonRun.UseVisualStyleBackColor = true;
+            this.buttonRun.Click += new System.EventHandler(this.buttonRun_Click);
             // 
             // ClientForm
             // 
