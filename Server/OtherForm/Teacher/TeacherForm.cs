@@ -1,9 +1,11 @@
-﻿using Repository;
+﻿using ClientServerDll;
+using Repository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -11,7 +13,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 using Tables;
+using Xml2CSharp;
 
 namespace Server.OtherForm
 {
@@ -26,12 +30,13 @@ namespace Server.OtherForm
 
             this.work = work;
             Text += $" - {user.Login}";
+            listViewConnectStudents.Columns.Add("Connect students", 106);
         }
 
         [Obsolete]
         private void TeacherForm_Load(object sender, EventArgs e)
         {
-            bindingSourceTests.DataSource = work.Repository<Test>().GetAll();
+            bindingSourceTests.DataSource = work.Repository<Tables.Test>().GetAll();
             listBoxTests.DataSource = bindingSourceTests.DataSource;
 
             bindingSourceStudents.DataSource = work.Repository<User>().GetAll().Where(x => x.Group.Title.Equals("Student")).ToList();
@@ -86,11 +91,27 @@ namespace Server.OtherForm
         private void buttonSendTest_Click(object sender, EventArgs e)
         {
             //Тут маємо вибраному студенту відправити вибраний тест
-            if (listViewConnectStudents.SelectedItems[0] != null)
+            if (listViewConnectStudents.SelectedItems.Count > 0 && listBoxTests.SelectedItem != null)
             {
                 Socket clientSocket = (listViewConnectStudents.SelectedItems[0].Tag as Socket);
-                byte[] buffer = Encoding.UTF8.GetBytes("buttonSend_Click");
-                clientSocket.Send(buffer);
+                Tables.Test currentTest = listBoxTests.SelectedItem as Tables.Test;
+
+                if (work.Repository<Tables.Test>().GetAll().FirstOrDefault(x => x.Id == currentTest.Id) != null)
+                {
+                    if (File.Exists(currentTest.Path))
+                    {
+                        Tests tests = null;
+
+                        using (FileStream stream = new FileStream(currentTest.Path, FileMode.Open))
+                        {
+                            XmlSerializer serializer = new XmlSerializer(typeof(Tests));
+                            tests = (Tests)serializer.Deserialize(stream);
+                        }
+
+                        byte[] buffer = Converter.ToByteArray<Tests>(tests);
+                        clientSocket.Send(buffer);
+                    }
+                }
             }
         }
     }

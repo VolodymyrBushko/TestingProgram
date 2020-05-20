@@ -116,6 +116,7 @@
             this.listViewConnectStudents.Size = new System.Drawing.Size(106, 95);
             this.listViewConnectStudents.TabIndex = 0;
             this.listViewConnectStudents.UseCompatibleStateImageBehavior = false;
+            this.listViewConnectStudents.View = System.Windows.Forms.View.Details;
             // 
             // TeacherForm
             // 

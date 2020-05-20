@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 
 namespace Xml2CSharp
 {
+	[Serializable]
 	[XmlRoot(ElementName = "Answer")]
 	public class Answer
 	{
@@ -12,8 +13,11 @@ namespace Xml2CSharp
 		public string IsRight { get; set; }
 		[XmlText]
 		public string Text { get; set; }
+
+		public Answer() { }
 	}
 
+	[Serializable]
 	[XmlRoot(ElementName = "Answers")]
 	public class Answers
 	{
@@ -21,8 +25,11 @@ namespace Xml2CSharp
 		public List<Answer> Answer { get; set; }
 		[XmlAttribute(AttributeName = "Count")]
 		public string Count { get; set; }
+
+		public Answers() { }
 	}
 
+	[Serializable]
 	[XmlRoot(ElementName = "Test")]
 	public class Test
 	{
@@ -34,8 +41,11 @@ namespace Xml2CSharp
 		public string Difficulty { get; set; }
 
 		public override string ToString() => Description;
+
+		public Test() { }
 	}
 
+	[Serializable]
 	[XmlRoot(ElementName = "Tests")]
 	public class Tests
 	{
@@ -49,5 +59,9 @@ namespace Xml2CSharp
 		public string Date { get; set; }
 		[XmlAttribute(AttributeName = "PassTime")]
 		public string PassTime { get; set; }
+
+		public override string ToString() => Subject;
+
+		public Tests() { }
 	}
 }
