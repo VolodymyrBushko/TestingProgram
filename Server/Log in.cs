@@ -32,7 +32,7 @@ namespace Server
                 switch (user.Group.Title)
                 {
                     case "Admin": form = new AdminForm(work, user); break;
-                    case "Teacher": form = new TeacherForm(work); break;
+                    case "Teacher": form = new TeacherForm(work, user); break;
                     default: MessageBox.Show("Refusal to access"); return;
                 }
                 form.ShowDialog();

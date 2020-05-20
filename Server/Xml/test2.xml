@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<Tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Author="Volod" Subject="Math2" Date="20.05.2020 8:49:37" PassTime="30">
+  <Test Difficulty="1">
+    <Description>1+1=</Description>
+    <Answers Count="2">
+      <Answer isRight="false">3</Answer>
+      <Answer isRight="true">2</Answer>
+    </Answers>
+  </Test>
+  <Test Difficulty="2">
+    <Description>10+10=</Description>
+    <Answers Count="4">
+      <Answer isRight="false">30</Answer>
+      <Answer isRight="true">20</Answer>
+      <Answer isRight="false">40</Answer>
+      <Answer isRight="true">40-20</Answer>
+    </Answers>
+  </Test>
+</Tests>

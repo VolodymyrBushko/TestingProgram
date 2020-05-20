@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<Tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Author="Volod" Subject="Math1" Date="20.05.2020 8:48:25" PassTime="45">
+  <Test Difficulty="1">
+    <Description>3+3=</Description>
+    <Answers Count="3">
+      <Answer isRight="true">6</Answer>
+      <Answer isRight="false">12</Answer>
+      <Answer isRight="false">18</Answer>
+    </Answers>
+  </Test>
+  <Test Difficulty="2">
+    <Description>5*5=</Description>
+    <Answers Count="4">
+      <Answer isRight="true">25</Answer>
+      <Answer isRight="false">35</Answer>
+      <Answer isRight="true">30-5</Answer>
+      <Answer isRight="false">40</Answer>
+    </Answers>
+  </Test>
+</Tests>
