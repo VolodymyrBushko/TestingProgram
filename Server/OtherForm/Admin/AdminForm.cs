@@ -7,6 +7,7 @@ using System.Xml.Serialization;
 using Repository;
 using Server.OtherForm.Admin;
 using Tables;
+using ValidXmlDll;
 using Xml2CSharp;
 
 namespace Server.OtherForm
@@ -34,6 +35,12 @@ namespace Server.OtherForm
             {
                 if (Directory.Exists(pathToXml))
                 {
+                    if (!ValidXml.IsValid(pathToXml, "D:\\xsd.xsd"))
+                    {
+                        MessageBox.Show("Xml not valid");
+                        return;
+                    }
+
                     FileInfo file = new FileInfo(openFileDialog.FileName);
                     file.MoveTo($@"{pathToXml}\{file.Name}");
 
