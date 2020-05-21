@@ -18,7 +18,8 @@ namespace Client.OtherForm
         private Socket socket;
         private Tests tests;
 
-        private int navigator;
+        private bool flag = true;
+        private int navigator, tick = 0, min = 0;
 
         public RunTestForm(Socket socket, Tests tests)
         {
@@ -42,6 +43,12 @@ namespace Client.OtherForm
 
         public void MoveTest(object sender, EventArgs e)
         {
+            if (flag)
+            {
+                timer.Start();
+                flag = false;
+            }
+
             if (navigator < tests.Test.Count - 1 && (sender as Button).Name.Equals("buttonNext"))
                 navigator++;
             else if (navigator > 0 && (sender as Button).Name.Equals("buttonPrev"))
@@ -75,10 +82,29 @@ namespace Client.OtherForm
         {
             Task.Run(() =>
             {
+                timer.Stop();
+                flag = true;
+
                 byte[] buffer = Converter.ToByteArray(tests);
                 socket.Send(buffer);
                 buttonEnd.Invoke(new Action(() => { this.Close(); }));
             });
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            tick++;
+
+            if (tick == 60)
+            {
+                min++;
+                tick = 0;
+            }
+
+            if (min >= int.Parse(textBoxPassTime.Text))
+                buttonEnd_Click(null, null);
+
+            Text = $"{min} : {tick}";
         }
     }
 }

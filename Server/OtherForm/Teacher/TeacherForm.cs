@@ -135,18 +135,22 @@ namespace Server.OtherForm
 
             while (true)
             {
-                byte[] buffer = new byte[8000];
-                socket.Receive(buffer);
-
-                Tests testsCurrent = null;
-                using (FileStream stream = new FileStream(pathToCurrentTest, FileMode.Open))
+                try
                 {
-                    XmlSerializer serializer = new XmlSerializer(typeof(Tests));
-                    testsCurrent = (Tests)serializer.Deserialize(stream);
-                }
+                    byte[] buffer = new byte[8000];
+                    socket.Receive(buffer);
 
-                Tests testsStudent = Converter.FromByteArray<Tests>(buffer);
-                Task.Run(() => GetResult(testsCurrent, testsStudent, toWriteInDb, userSocket.User));
+                    Tests testsCurrent = null;
+                    using (FileStream stream = new FileStream(pathToCurrentTest, FileMode.Open))
+                    {
+                        XmlSerializer serializer = new XmlSerializer(typeof(Tests));
+                        testsCurrent = (Tests)serializer.Deserialize(stream);
+                    }
+
+                    Tests testsStudent = Converter.FromByteArray<Tests>(buffer);
+                    Task.Run(() => GetResult(testsCurrent, testsStudent, toWriteInDb, userSocket.User));
+                }
+                catch { }
             }
         }
 
@@ -157,7 +161,9 @@ namespace Server.OtherForm
             for (int i = 0; i < testsCurrent.Test.Count; i++)
                 for (int j = 0; j < Convert.ToInt32(testsCurrent.Test[i].Answers.Count); j++)
                 {
-                    if (testsCurrent.Test[i].Answers.Answer[j].IsRight == testsStudent.Test[i].Answers.Answer[j].IsRight)
+                    if (testsCurrent.Test[i].Answers.Answer[j].IsRight ==
+                        testsStudent.Test[i].Answers.Answer[j].IsRight && 
+                        testsCurrent.Test[i].Answers.Answer[j].IsRight == "true")
                         rating++;
                     if (testsCurrent.Test[i].Answers.Answer[j].IsRight == "true")
                         maxRating++;

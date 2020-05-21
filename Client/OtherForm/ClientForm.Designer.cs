@@ -73,6 +73,7 @@
             this.Controls.Add(this.listViewTests);
             this.Name = "ClientForm";
             this.Text = "ClientForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ClientForm_FormClosing);
             this.Load += new System.EventHandler(this.ClientForm_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

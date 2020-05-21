@@ -36,13 +36,17 @@ namespace Client.OtherForm
         {
             while(true)
             {
-                byte[] buffer = new byte[8000];
-                int nCount = socket.Receive(buffer);
-                string message = Encoding.UTF8.GetString(buffer);
+                try
+                {
+                    byte[] buffer = new byte[8000];
+                    int nCount = socket.Receive(buffer);
+                    string message = Encoding.UTF8.GetString(buffer);
 
-                tests = Converter.FromByteArray<Tests>(buffer);
+                    tests = Converter.FromByteArray<Tests>(buffer);
 
-                listViewTests.Invoke(new Action(() => { listViewTests.Items.Add(tests.ToString()); }));
+                    listViewTests.Invoke(new Action(() => { listViewTests.Items.Add(tests.ToString()); }));
+                }
+                catch { }
             }
         }
 
@@ -53,6 +57,11 @@ namespace Client.OtherForm
                 RunTestForm form = new RunTestForm(socket, tests);
                 form.ShowDialog();
             }
+        }
+
+        private void ClientForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            socket.Close();
         }
     }
 }
